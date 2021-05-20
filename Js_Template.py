@@ -15,7 +15,8 @@ def createFile(dirName, fileName):
 
 if __name__ == "__main__":
     try:
-        currentDir = os.path.dirname(os.path.realpath(__file__))
+        # currentDir = os.path.dirname(os.path.realpath(__file__))
+        currentDir = input("Give your path: ")
         createFile(currentDir, "index.html")
 
         assets = os.path.join(currentDir,"assets")
