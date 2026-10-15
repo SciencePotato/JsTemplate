@@ -1,2 +1,2 @@
 # JsTemplate
-A python file to initialize JS website structure
+A Python script for creating a basic JavaScript website structure.

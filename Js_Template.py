@@ -16,7 +16,7 @@ def createFile(dirName, fileName):
 if __name__ == "__main__":
     try:
         # currentDir = os.path.dirname(os.path.realpath(__file__))
-        currentDir = input("Give your path: ")
+        currentDir = input("Enter the target directory path: ")
         createFile(currentDir, "index.html")
 
         assets = os.path.join(currentDir,"assets")
@@ -38,6 +38,5 @@ if __name__ == "__main__":
         createFile(css, "main.css")
 
     except Exception as e:
-        print("An Error Occurred:")
+        print("An error occurred:")
         print(e)
-
