@@ -1,22 +1,21 @@
 import os
 
 def createDir(dirName):
-    if(os.path.exists(dirName)):
-        print(dirName + " already exists")
-    else:
-        os.mkdir(dirName)
+    os.makedirs(dirName, exist_ok=True)
 
 def createFile(dirName, fileName):
-    if(os.path.exists(os.path.join(dirName,fileName))):
+    try:
+        with open(os.path.join(dirName, fileName), "x"):
+            pass
+    except FileExistsError:
         print(fileName + " already exists")
-    else:
-        file = open(os.path.join(dirName,fileName), "w+")
 
 
 if __name__ == "__main__":
     try:
         # currentDir = os.path.dirname(os.path.realpath(__file__))
         currentDir = input("Give your path: ")
+        createDir(currentDir)
         createFile(currentDir, "index.html")
 
         assets = os.path.join(currentDir,"assets")
