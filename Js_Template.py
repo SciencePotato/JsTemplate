@@ -1,4 +1,5 @@
 import os
+import sys
 
 def createDir(dirName):
     if(os.path.exists(dirName)):
@@ -7,6 +8,8 @@ def createDir(dirName):
         os.mkdir(dirName)
 
 def createFile(dirName, fileName):
+    if os.path.isdir(os.path.join(dirName, fileName)):
+        raise IsADirectoryError(os.path.join(dirName, fileName))
     if(os.path.exists(os.path.join(dirName,fileName))):
         print(fileName + " already exists")
     else:
@@ -37,7 +40,8 @@ if __name__ == "__main__":
         createDir(css)
         createFile(css, "main.css")
 
-    except Exception as e:
-        print("An Error Occurred:")
-        print(e)
+    except (OSError, EOFError) as e:
+        print("An Error Occurred:", file=sys.stderr)
+        print(e, file=sys.stderr)
+        sys.exit(1)
 
